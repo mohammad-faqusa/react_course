@@ -103,10 +103,10 @@ def create_code_exercise(section_title, part_title):
     # print(part_directory_path)
     create_directory(part_directory_path)
 
-section_title = "Section 1: Welcome, Welcome, Welcome!"
+section_title = "Section 3: A First Look at React"
 # section_title = "coding-exercises"
 
-part_title = "2. Building Our First React App!"
+part_title = "13. Pure React"
 print(f"export PART_TITLE='{part_title}'")
 
 prepare_resources(section_title, part_title)
