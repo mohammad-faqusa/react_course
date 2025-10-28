@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+import "./index.css";
+
 const pizzaData = [
   {
     name: "Focaccia",
@@ -45,10 +47,20 @@ const pizzaData = [
     soldOut: false,
   },
 ];
+function Pizza(props) {
+  return (
+    <div className="pizza">
+      <div>
+        <h3>{props.name}</h3>
+      </div>
+      <img src={"./" + props.photoName} alt={props.photoName} />
+    </div>
+  );
+}
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -57,16 +69,22 @@ function App() {
 }
 
 function Header() {
-  return <h1>Pizza Menu</h1>;
+  return (
+    <header className="header">
+      <h1>Pizza Menu</h1>
+    </header>
+  );
 }
 
 function Menu() {
   return (
-    <div>
-      {pizzaData.map((pizza) => (
-        <Pizza name={pizza.name} />
-      ))}
-    </div>
+    <main className="menu">
+      <div className="pizzas">
+        {pizzaData.map((pizza) => (
+          <Pizza name={pizza.name} photoName={pizza.photoName} />
+        ))}
+      </div>
+    </main>
   );
 }
 
@@ -74,17 +92,9 @@ function Footer() {
   const hour = new Date().getHours();
 
   return (
-    <div>
+    <footer className="footer">
       <p>the office closes at {hour}</p>
-    </div>
-  );
-}
-
-function Pizza(props) {
-  return (
-    <div>
-      <h2>{props.name}</h2>
-    </div>
+    </footer>
   );
 }
 
