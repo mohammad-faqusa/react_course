@@ -71,7 +71,13 @@ function Menu() {
 }
 
 function Footer() {
-  return <h3>this is the end of pizza menu</h3>;
+  const hour = new Date().getHours();
+
+  return (
+    <div>
+      <p>the office closes at {hour}</p>
+    </div>
+  );
 }
 
 function Pizza(props) {
