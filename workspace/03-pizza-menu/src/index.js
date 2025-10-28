@@ -49,11 +49,29 @@ const pizzaData = [
 function App() {
   return (
     <div>
+      <Header />
+      <Menu />
+      <Footer />
+    </div>
+  );
+}
+
+function Header() {
+  return <h1>Pizza Menu</h1>;
+}
+
+function Menu() {
+  return (
+    <div>
       {pizzaData.map((pizza) => (
         <Pizza name={pizza.name} />
       ))}
     </div>
   );
+}
+
+function Footer() {
+  return <h3>this is the end of pizza menu</h3>;
 }
 
 function Pizza(props) {
