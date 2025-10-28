@@ -106,7 +106,7 @@ def create_code_exercise(section_title, part_title):
 section_title = "Section 5: Working With Components, Props, and JSX"
 # section_title = "coding-exercises"
 
-part_title = "41. Styling React Applications"
+part_title = "42. Passing and Receiving Props"
 print(f"export PART_TITLE='{part_title}'")
 
 prepare_resources(section_title, part_title)
