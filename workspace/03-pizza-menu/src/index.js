@@ -106,10 +106,16 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {isOpen && pizzaNum > 0 && (
+      {isOpen && pizzaNum > 0 ? (
         <div className="order">
           <p>We are open until {endHour}</p>
           <button className="btn">Order</button>
+        </div>
+      ) : (
+        <div>
+          <p>
+            We are happy to welcome you between {openHour} and {endHour}
+          </p>
         </div>
       )}
     </footer>
