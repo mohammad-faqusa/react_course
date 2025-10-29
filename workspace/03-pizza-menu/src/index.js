@@ -48,15 +48,13 @@ const pizzaData = [
   },
 ];
 function Pizza({ pizzaObj }) {
-  if (pizzaObj.soldOut) return null;
-
   return (
-    <li className="pizza">
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
       <img src={"./" + pizzaObj.photoName} alt={pizzaObj.photoName} />
       <div>
         <h3>{pizzaObj.name}</h3>
         <p>{pizzaObj.ingredients}</p>
-        <span>{pizzaObj.price}</span>
+        <span>{pizzaObj.soldOut ? "Sold out" : pizzaObj.price}</span>
       </div>
     </li>
   );
