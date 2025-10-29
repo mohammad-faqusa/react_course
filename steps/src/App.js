@@ -6,6 +6,14 @@ const messages = [
   "Invest your new income ",
 ];
 
+function handlePrevious() {
+  alert();
+}
+
+function handleNext() {
+  alert();
+}
+
 function App() {
   const stepNum = 3;
   return (
@@ -18,10 +26,16 @@ function App() {
       <p className="message">{messages[0]} </p>
 
       <div className="buttons">
-        <button style={{ backgroundColor: "#7950f2", color: "#fff" }}>
+        <button
+          onClick={handlePrevious}
+          style={{ backgroundColor: "#7950f2", color: "#fff" }}
+        >
           Previous
         </button>
-        <button style={{ backgroundColor: "#7950f2", color: "#fff" }}>
+        <button
+          onClick={handleNext}
+          style={{ backgroundColor: "#7950f2", color: "#fff" }}
+        >
           Next
         </button>
       </div>
