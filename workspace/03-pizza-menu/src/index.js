@@ -49,14 +49,14 @@ const pizzaData = [
 ];
 function Pizza(props) {
   return (
-    <div className="pizza">
+    <li className="pizza">
       <img src={"./" + props.photoName} alt={props.photoName} />
       <div>
         <h3>{props.name}</h3>
         <p>{props.ingredients}</p>
         <span>{props.price}</span>
       </div>
-    </div>
+    </li>
   );
 }
 
@@ -81,7 +81,7 @@ function Header() {
 function Menu() {
   return (
     <main className="menu">
-      <div className="pizzas">
+      <ul className="pizzas">
         {pizzaData.map((pizza) => (
           <Pizza
             name={pizza.name}
@@ -90,7 +90,7 @@ function Menu() {
             price={pizza.price}
           />
         ))}
-      </div>
+      </ul>
     </main>
   );
 }
