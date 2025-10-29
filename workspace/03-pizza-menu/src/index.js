@@ -83,11 +83,19 @@ function Header() {
 function Menu() {
   return (
     <main className="menu">
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza pizzaObj={pizza} />
-        ))}
-      </ul>
+      <h2>Our Menu</h2>
+      {pizzaData.length > 0 ? (
+        <>
+          <p>Delecious italizna food </p>
+          <ul className="pizzas">
+            {pizzaData.map((pizza) => (
+              <Pizza pizzaObj={pizza} />
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p>We are working in our menu , please try again later</p>
+      )}
     </main>
   );
 }
