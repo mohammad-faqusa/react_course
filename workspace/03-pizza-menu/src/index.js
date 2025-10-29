@@ -97,10 +97,21 @@ function Menu() {
 
 function Footer() {
   const hour = new Date().getHours();
+  const openHour = 12;
+  const endHour = 22;
+
+  const isOpen = hour < endHour && hour > openHour;
+
+  const pizzaNum = pizzaData.length;
 
   return (
     <footer className="footer">
-      <p>the office closes at {hour}</p>
+      {isOpen && pizzaNum > 0 && (
+        <div className="order">
+          <p>We are open until {endHour}</p>
+          <button className="btn">Order</button>
+        </div>
+      )}
     </footer>
   );
 }
