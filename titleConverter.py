@@ -106,7 +106,7 @@ def create_code_exercise(section_title, part_title):
 section_title = "Section 6: State, Events, and Forms: Interactive Components"
 # section_title = "coding-exercises"
 
-part_title = "71. Rendering the Items List"
+part_title = "72. Building a Form and Handling Submissions"
 print(f"export PART_TITLE='{part_title}'")
 
 prepare_resources(section_title, part_title)
