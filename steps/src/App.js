@@ -16,7 +16,10 @@ function App() {
   }
 
   function handleNext() {
-    if (stepNum < 3) setStep((n) => n + 1);
+    if (stepNum < 3) {
+      setStep((n) => n + 1);
+      // setStep((n) => n + 1);
+    }
   }
   return (
     <>
