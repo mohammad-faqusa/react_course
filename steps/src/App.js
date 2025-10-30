@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./index.css";
 
 const messages = [
@@ -6,16 +7,16 @@ const messages = [
   "Invest your new income ",
 ];
 
-function handlePrevious() {
-  alert();
-}
-
-function handleNext() {
-  alert();
-}
-
 function App() {
-  const stepNum = 3;
+  const [stepNum, setStep] = useState(1);
+
+  function handlePrevious() {
+    if (stepNum > 1) setStep((n) => n - 1);
+  }
+
+  function handleNext() {
+    if (stepNum < 3) setStep((n) => n + 1);
+  }
   return (
     <div className="steps">
       <div className="numbers">
@@ -23,7 +24,7 @@ function App() {
         <div className={stepNum >= 2 ? "active" : ""}>2</div>
         <div className={stepNum >= 3 ? "active" : ""}>3</div>
       </div>
-      <p className="message">{messages[0]} </p>
+      <p className="message">{messages[stepNum - 1]} </p>
 
       <div className="buttons">
         <button
