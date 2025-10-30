@@ -8,6 +8,15 @@ const messages = [
 ];
 
 function App() {
+  return (
+    <>
+      <Step />
+      <Step />
+    </>
+  );
+}
+
+function Step() {
   const [stepNum, setStep] = useState(1);
   const [isOpen, setOpen] = useState(true);
 
