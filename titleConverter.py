@@ -103,10 +103,10 @@ def create_code_exercise(section_title, part_title):
     # print(part_directory_path)
     create_directory(part_directory_path)
 
-section_title = "Section 6: State, Events, and Forms: Interactive Components"
+section_title = "Section 8: [Optional] Practice Project: Eat-'N-Split"
 # section_title = "coding-exercises"
 
-part_title = "93. CHALLENGE #1: Tip Calculator"
+part_title = "96. Building the Static App: List of Friends"
 print(f"export PART_TITLE='{part_title}'")
 
 prepare_resources(section_title, part_title)
