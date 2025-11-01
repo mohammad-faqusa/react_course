@@ -3,7 +3,7 @@ import "./index.css";
 
 const initialItems = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
-  { id: 2, description: "Socks", quantity: 12, packed: true },
+  { id: 2, description: "Socks", quantity: 12, packed: false },
 ];
 
 export default function App() {
@@ -32,7 +32,7 @@ export default function App() {
         onDeleteItem={handleDeleteItem}
         onToggleItem={handleToggleItem}
       />
-      <Stats />
+      <Stats items={items} />
     </div>
   );
 }
@@ -118,10 +118,23 @@ function Item({ item, onDeleteItem, onToggleItem }) {
   );
 }
 
-function Stats() {
+function Stats({ items }) {
+  if (items.length === 0)
+    return <p className="stats">Start with adding items.</p>;
+  const numOfItems = items.length;
+  const numOfPacketItems = items.filter((i) => i.packed).length;
+  const percentage = Math.round((numOfPacketItems / numOfItems) * 100);
+
   return (
     <footer>
-      <em>You have x items on your list, and you already packed x</em>
+      <em className="stats">
+        {numOfPacketItems !== numOfItems
+          ? `You have ${numOfItems} items on your list, and you already packed${numOfPacketItems}, with percentage ${Number(
+              percentage
+            )}`
+          : `You are done of packaging items`}
+        x
+      </em>
     </footer>
   );
 }
