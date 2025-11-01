@@ -1,5 +1,9 @@
 import { useState } from "react";
 import "./index.css";
+import Logo from "./Logo";
+import Form from "./Form";
+import PackageList from "./PackageList";
+import Stats from "./Stats";
 
 const initialItems = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
@@ -41,131 +45,5 @@ export default function App() {
       />
       <Stats items={items} />
     </div>
-  );
-}
-
-function Logo() {
-  return <h1>🌳 Far Away 🧁</h1>;
-}
-
-function Form({ onAddItem }) {
-  const [description, setDescription] = useState("");
-  const [selection, setSelection] = useState(1);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    if (!description) return;
-
-    const newItem = { description, selection, packed: false, id: Date.now() };
-
-    console.log(newItem);
-
-    setDescription("");
-    setSelection(1);
-    onAddItem(newItem);
-  }
-
-  return (
-    <form className="add-form" onSubmit={handleSubmit}>
-      <h3>what do you need for your trip ?</h3>
-      <select
-        value={selection}
-        onChange={(e) => {
-          setSelection(Number(e.target.value));
-        }}
-      >
-        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
-          <option value={num} key={num}>
-            {num}
-          </option>
-        ))}
-      </select>
-      <input
-        type="text"
-        placeholder="Item..."
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <button>Add</button>
-    </form>
-  );
-}
-
-function PackageList({ items, onDeleteItem, onToggleItem, onClearItems }) {
-  const [sortBy, setSortBy] = useState("input");
-
-  let sortedElements;
-
-  if (sortBy === "input") sortedElements = items;
-  else if (sortBy === "description")
-    sortedElements = items
-      .slice()
-      .sort((a, b) => a.description.localeCompare(b.description));
-  else if (sortBy === "packed")
-    sortedElements = items
-      .slice()
-      .sort((a, b) => Number(a.packed) - Number(b.packed));
-  else sortedElements = items;
-
-  return (
-    <div className="list">
-      <ul>
-        {sortedElements.map((item) => (
-          <Item
-            item={item}
-            key={item.id}
-            onDeleteItem={onDeleteItem}
-            onToggleItem={onToggleItem}
-          />
-        ))}
-      </ul>
-
-      <div>
-        <select value={sortBy} onClick={(e) => setSortBy(e.target.value)}>
-          <option value="input">input</option>
-          <option value="description">description</option>
-          <option value="packaging">packaging</option>
-        </select>
-      </div>
-      <button onClick={() => onClearItems()}>Clear List</button>
-    </div>
-  );
-}
-
-function Item({ item, onDeleteItem, onToggleItem }) {
-  return (
-    <li>
-      <input
-        type="checkbox"
-        value={item.packed}
-        onClick={() => onToggleItem(item.id)}
-      />
-      <span style={item.packed ? { textDecoration: "line-through" } : {}}>
-        {item.description}
-      </span>
-      <button onClick={() => onDeleteItem(item.id)}>❌</button>
-    </li>
-  );
-}
-
-function Stats({ items }) {
-  if (items.length === 0)
-    return <p className="stats">Start with adding items.</p>;
-  const numOfItems = items.length;
-  const numOfPacketItems = items.filter((i) => i.packed).length;
-  const percentage = Math.round((numOfPacketItems / numOfItems) * 100);
-
-  return (
-    <footer>
-      <em className="stats">
-        {numOfPacketItems !== numOfItems
-          ? `You have ${numOfItems} items on your list, and you already packed${numOfPacketItems}, with percentage ${Number(
-              percentage
-            )}`
-          : `You are done of packaging items`}
-        x
-      </em>
-    </footer>
   );
 }
